@@ -1,3 +1,5 @@
+from tabulate import tabulate
+
 import Modulos.getClients as cliente
 
-print(cliente.getAllClientPaisRegionCiudad("Spain", "fuenlabrada", "Madrid"))
+print(tabulate(cliente.getAllClientPaisRegionCiudad("Spain", "fuenlabrada", "Madrid"), tablefmt = 'grid'))
