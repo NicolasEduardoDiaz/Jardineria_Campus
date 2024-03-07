@@ -1,4 +1,4 @@
-import Storage.cliente as cli
+import storage.cliente as cli
 
 def getAllClientesName():
     clienteName = []
