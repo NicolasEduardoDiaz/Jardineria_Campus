@@ -1,15 +1,35 @@
 from tabulate import tabulate
 
-import modulos.getClients as cliente
+import modules.getClients as cliente
 
-print(tabulate(cliente.getAllClientPaisRegionCiudad("Spain", "fuenlabrada", "Madrid"), tablefmt = 'grid'))
+
 from tabulate import tabulate 
-import modulos.getEmpleados as empleado
-import modulos.getClients as clientes
-import modulos.getOficina as oficina
-import modulos.getPedidos as pedido
-import modulos.getPago as pago
+import modules.getEmpleados as empleado
+import modules.getClients as clientes
+import modules.getOficina as oficina
+import modules.getPedidos as pedido
+import modules.getPago as pago
+import sys
 
+if(__name__=="_name_"):
+    print(f"""
+      __  ___                    ____       _            _             __
+   /  |/  /__  ____  __  __   / __ \_____(_)___  _____(_)___  ____ _/ /
+  / /|_/ / _ \/ __ \/ / / /  / /_/ / ___/ / __ \/ ___/ / __ \/ __ `/ / 
+ / /  / /  __/ / / / /_/ /  / ____/ /  / / / / / /__/ / /_/ / /_/ / /  
+/_/  /_/\___/_/ /_/\__,_/  /_/   /_/  /_/_/ /_/\___/_/ .___/\__,_/_/   
+                                                    /_/          
+                         1.cliente
+                         2.oficina
+                         3.empleado
+                         4.pedidos
+   """)
+    opcion = int(input("\nseleccione una de las opciones"))
+    if(opcion==1):
+        cliente.menu()
+    elif():
+
+#print(tabulate(cliente.getAllClientPaisRegionCiudad("Spain", "fuenlabrada", "Madrid"), tablefmt = 'grid'))
    #Todos los nombres de los empleados
 #print(tabulate(empleado.getAllEmpleadosName()), tablefmt="grid")
 
