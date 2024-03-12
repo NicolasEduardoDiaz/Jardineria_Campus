@@ -158,3 +158,12 @@ def menu():
                       
                       0. Salir al menú
                 """)
+        opcion = int(input(f"""
+        Seleccione una de las opciones:"""))
+        if opcion == 1:
+            print(tabulate(search(), headers="keys", tablefmt="rounded_grid"))
+
+        elif opcion == 2:
+            codigoCliente = int(input(f"""
+    Ingrese el codigo del cliente:"""))
+            print(tabulate(getOneClienteCodigo(codigoCliente), headers="keys", tablefmt="rounded_grid"))
