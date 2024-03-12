@@ -7,7 +7,7 @@ import modules.getPedidos as pedido
 import modules.getPago as pago
 import sys
 
-
+#https://patorjk.com/software/taag/#p=display&h=2&v=2&f=Slant&t=Menu%20Principal
 #PUNTOS PAGINA
 
    #1 punto

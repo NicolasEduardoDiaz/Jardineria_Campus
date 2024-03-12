@@ -167,3 +167,35 @@ def menu():
             codigoCliente = int(input(f"""
     Ingrese el codigo del cliente:"""))
             print(tabulate(getOneClienteCodigo(codigoCliente), headers="keys", tablefmt="rounded_grid"))
+
+        elif opcion == 3:
+            limiteCredit = float(input(f"""
+    ingrese el limite de credito:  """))
+            ciudad = input(f"""
+    Ingrese la ciudad: """)
+            print(tabulate(getAllClientsCreditCiudad(limiteCredit, ciudad), headers="keys", tablefmt="rouded_grid"))
+
+        elif opcion == 4:
+            faxx = (input(f"""
+    Ingrese el fax del cliente: """))
+            print(tabulate(getAllClientsMismoFax(faxx),headers="keys", tablefmt="rounded_grid"))
+
+        elif opcion == 6:
+            print(tabulate(getAllClientsNombrePostal(),headers="keys", tablefmt="rounded_grid"))
+            
+
+        elif opcion == 7:
+            print(tabulate(getAllClientsDirecciones(),headers="keys", tablefmt="rounded_grid"))
+            
+
+        elif opcion ==8:
+            apellidoo = input(f"""
+    Escriba el apellido del cliente: """)
+            print(tabulate(getAllClientsApellidoContacto(apellidoo),headers="keys", tablefmt="rounded_grid"))
+            
+
+        elif opcion == 9:
+            print(tabulate(getAllNombreSpain(),headers="keys", tablefmt="rounded_grid"))
+  
+        elif opcion == 0:
+            break
