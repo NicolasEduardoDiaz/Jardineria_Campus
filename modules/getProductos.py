@@ -1,4 +1,5 @@
-import storage.producto as pro 
+import json
+import requests
 
 def getAllStockPriceGama(gama, stock):
     condiciones = []

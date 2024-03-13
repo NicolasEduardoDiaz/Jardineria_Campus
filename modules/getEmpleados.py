@@ -3,7 +3,7 @@ from tabulate import tabulate
 
 def getAllNombreApellidoEmailJefe(codigo):
     NombreApellidoEmail = []
-    for val in em.empleados:
+    for val in em.empleado:
         if val.get("codigo_jefe") == codigo:
             NombreApellidoEmail.append(
                 {
@@ -17,7 +17,7 @@ def getAllNombreApellidoEmailJefe(codigo):
 
 def getAllPuestoNombreApellidosEmailJefe():
     DatosJefe = list()
-    for val in em.empleados:
+    for val in em.empleado:
         if val.get("codigo_jefe") == None:
             DatosJefe.append({
                 "Puesto":val.get("puesto"),
@@ -29,7 +29,7 @@ def getAllPuestoNombreApellidosEmailJefe():
 
 def getAllNombreApellidosPuestoNoRepVentas():
     InfoNoRepVentas = list()
-    for val in em.empleados:
+    for val in em.empleado:
         if val.get("puesto") != "Representante Ventas":
             InfoNoRepVentas.append({
                 "Puesto":val.get("puesto"),

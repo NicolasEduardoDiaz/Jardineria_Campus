@@ -6,7 +6,7 @@ def search():
     for val in cli.clientes:
         codName = dict({
             "Codigo": val.get("codigo_cliente"),
-            "Nombre": val.ger("nombre_cliente")
+            "Nombre": val.get("nombre_cliente")
         })
         ClienteName.append(codName)
     return ClienteName
