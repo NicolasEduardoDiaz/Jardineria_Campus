@@ -1,4 +1,4 @@
-import storage.empleado as em 
+import storage.empleado as em
 from tabulate import tabulate
 
 def getAllNombreApellidoEmailJefe(codigo):
