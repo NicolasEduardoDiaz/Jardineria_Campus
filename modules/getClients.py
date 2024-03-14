@@ -133,51 +133,44 @@ def getAllNombreSpain():
 def menu(): 
     while True: 
         print(f"""
-  _______                                           __                           __                   ______   __  __                      __                       
- |       \                                         |  \                         |  \                 /      \ |  \|  \                    |  \                      
- | $$$$$$$\  ______    ______    ______    ______ _| $$_    ______          ____| $$  ______        |  $$$$$$\| $$ \$$  ______   _______ _| $$_    ______   _______ 
- | $$__| $$ /      \  /      \  /      \  /      \   $$ \  /      \        /      $$ /      \       | $$   \$$| $$|  \ /      \ |       \   $$ \  /      \ /       \
- | $$    $$|  $$$$$$\|  $$$$$$\|  $$$$$$\|  $$$$$$\$$$$$$ |  $$$$$$\      |  $$$$$$$|  $$$$$$\      | $$      | $$| $$|  $$$$$$\| $$$$$$$\$$$$$$ |  $$$$$$\  $$$$$$$
- | $$$$$$$\| $$    $$| $$  | $$| $$  | $$| $$   \$$| $$ __| $$    $$      | $$  | $$| $$    $$      | $$   __ | $$| $$| $$    $$| $$  | $$| $$ __| $$    $$\$$    \ 
- | $$  | $$| $$$$$$$$| $$__/ $$| $$__/ $$| $$      | $$|  \ $$$$$$$$      | $$__| $$| $$$$$$$$      | $$__/  \| $$| $$| $$$$$$$$| $$  | $$| $$|  \ $$$$$$$$_\$$$$$$\
- | $$  | $$ \$$     \| $$    $$ \$$    $$| $$       \$$  $$\$$     \       \$$    $$ \$$     \       \$$    $$| $$| $$ \$$     \| $$  | $$ \$$  $$\$$     \       $$
-  \$$   \$$  \$$$$$$$| $$$$$$$   \$$$$$$  \$$        \$$$$  \$$$$$$$        \$$$$$$$  \$$$$$$$        \$$$$$$  \$$ \$$  \$$$$$$$ \$$   \$$  \$$$$  \$$$$$$$\$$$$$$$ 
-                     | $$                                                                                                                                           
-                     | $$                                                                                                                                           
-                      \$$                                                                                                                                           
+                ____                        __              __        
+               / __ \___  ____  ____  _____/ /____     ____/ /__      
+              / /_/ / _ \/ __ \/ __ \/ ___/ __/ _ \   / __  / _ \     
+             / _, _/  __/ /_/ / /_/ / /  / /_/  __/  / /_/ /  __/     
+            /_/ |_|\___/ .___/\____/_/   \__/\___/   \__,_/\___/      
+                    __/_/          __                                 
+              _____/ (_)__  ____  / /____  _____                      
+             / ___/ / / _ \/ __ \/ __/ _ \/ ___/                      
+            / /__/ / /  __/ / / / /_/  __(__  )                       
+            \___/_/_/\___/_/ /_/\__/\___/____/                        
+                                                                
                       
-                      1. Obtener el Nombre y el codigo de los clientes.
-                      2. Obtener Un cliente por codiogo.
-                      3. Obtener la informacion por el limite de credito y la ciudad.
-                      4. Obtener la informacion de los clientes segun el fax. 
-                      5. Obtener la informacion por el codigo de representante de venta. 
-                      6. Obtener el nombre y la postal del cliente. 
-                      7. Obtener la direccion de los clientes
-                      8. Obtener la informacion de los clientes por su apellido. 
-                      9. Obtener los nombres de los clientes que viven en España.
+                  1. Obtener el Nombre y el codigo de los clientes.
+                  2. Obtener Un cliente por codiogo.
+                  3. Obtener la informacion por el limite de credito y la ciudad.
+                  4. Obtener la informacion de los clientes segun el fax. 
+                  5. Obtener la informacion por el codigo de representante de venta. 
+                  6. Obtener el nombre y la postal del cliente. 
+                  7. Obtener la direccion de los clientes
+                      
                       
                       0. Salir al menú
                 """)
-        opcion = int(input(f"""
-        Seleccione una de las opciones:"""))
+        opcion = input("Seleccione una opcion")
         if opcion == 1:
             print(tabulate(search(), headers="keys", tablefmt="rounded_grid"))
 
         elif opcion == 2:
-            codigoCliente = int(input(f"""
-    Ingrese el codigo del cliente:"""))
+            codigoCliente = int(input("Ingrese el codigo del cliente: "))
             print(tabulate(getOneClienteCodigo(codigoCliente), headers="keys", tablefmt="rounded_grid"))
 
         elif opcion == 3:
-            limiteCredit = float(input(f"""
-    ingrese el limite de credito:  """))
-            ciudad = input(f"""
-    Ingrese la ciudad: """)
+            limiteCredit = float(input("ingrese el limite de credito: "))
+            ciudad = input("Ingrese la ciudad: ")
             print(tabulate(getAllClientsCreditCiudad(limiteCredit, ciudad), headers="keys", tablefmt="rouded_grid"))
 
         elif opcion == 4:
-            faxx = (input(f"""
-    Ingrese el fax del cliente: """))
+            faxx = (input("Ingrese el fax del cliente: "))
             print(tabulate(getAllClientsMismoFax(faxx),headers="keys", tablefmt="rounded_grid"))
 
         elif opcion == 6:
@@ -187,15 +180,8 @@ def menu():
         elif opcion == 7:
             print(tabulate(getAllClientsDirecciones(),headers="keys", tablefmt="rounded_grid"))
             
-
-        elif opcion ==8:
-            apellidoo = input(f"""
-    Escriba el apellido del cliente: """)
-            print(tabulate(getAllClientsApellidoContacto(apellidoo),headers="keys", tablefmt="rounded_grid"))
-            
-
-        elif opcion == 9:
-            print(tabulate(getAllNombreSpain(),headers="keys", tablefmt="rounded_grid"))
   
         elif opcion == 0:
             break
+        else:
+            print("Opción no válida. Por favor, seleccione una opción válida.")
