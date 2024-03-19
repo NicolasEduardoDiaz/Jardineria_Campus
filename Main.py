@@ -1,122 +1,156 @@
+from tabulate import tabulate
 import os
-from tabulate import tabulate 
-import modules.getEmpleados as empleado
-import modules.getClients as clientes
+import re
+import json
+import requests
+
+
+import modules.getClients as cliente
 import modules.getOficina as oficina
-import modules.getPedidos as pedido
-import modules.getPago as pago
-import sys
-
-#https://patorjk.com/software/taag/#p=display&h=2&v=2&f=Slant&t=Menu%20Principal
-#PUNTOS PAGINA
-
-   #1 punto
-#print(tabulate(oficina.getCodigoOfiCiudadName(), tablefmt="grid"))
-
-   #2 punto
-#print(tabulate(oficina.getCiudadTelefonoEspaña(), tablefmt="grid"))
-
-   #3 punto
-#print(tabulate(empleado.getNombreApellidoEmailJefe(), tablefmt="grid"))
-
-   #4 punto
-#print(tabulate(empleado.getAllJefesCode(), tablefmt="grid"))
-
-   #5 punto
-#print(tabulate(empleado.getEmpleadosPuesto(), tablefmt="grid"))
-
-   #6 punto
-#print(tabulate(clientes.getNombreClientesEspaña(), tablefmt="grid"))
-
-   #7 punto
-#print(tabulate(pedido.getEstadoPedido(), tablefmt="grid"))
-
-   #8 punto
-#print(pago.getFechaPago())
-
-   #9 punto
-#print(tabulate(pedido.getAllPedidosEntregadosAtrasados(), tablefmt="grid"))
-
-   #10 punto
-#print(tabulate(pedido.getPedidosDosDias(), tablefmt="grid"))
-
-   #11 punto
-#print(tabulate(pedido.getRechazos2009(), tablefmt="grid"))
-
-   #12 punto
-#print(tabulate(pedido.getEntregadosEnero(), tablefmt="grid"))
-
-   #13 punto
-#print(tabulate(pago.getPagoPaypal(), tablefmt="grid"))
-
-   #14 punto 
-#print(tabulate(pago.getFormaDePago))
-
-   #EJERCICIOS PRACTICA
-
-   #Todos los nombres de los empleados
-#print(tabulate(empleado.getAllEmpleadosName(), tablefmt="grid"))
-
-   #Filtrar la informacion por el codigo de jefe correspondiente
-#print(tabulate(empleado.getAllEmpleado(15)))
-
-   #La informacion del nombre de la persona 
-#print(tabulate(empleado.getOneEmpleadoNombreApellidos("Ruben")))
-
-   #Con el codigo del empleado y opcional el nombre muestra la informacion
-#print(tabulate(empleado.getOneEmpleadoCodeNombre(17)))
-
-   #Filtrar la informacion por el codigo de jefe correspondiente
-#print(tabulate(empleado.getAllEmpleadosCode(15)))
-
-   #Muestra toda la información de las personas que no son representante de ventas
-#print(tabulate(empleado.getOneEmpleadoExtension("Representante Ventas")))
+import modules.getEmpleados as empleado
+import modules.getPedidos as pedidos
+import modules.getProductos as Repproducto
+import modules.postProducto as CRUDproducto
 
 
+def menuProducto():
+    while True:
+        os.system("clear")
+        print("""
+    ____  _                            _     __               __                                 
+   / __ )(_)__  ____ _   _____  ____  (_)___/ /___     ____ _/ /  ____ ___  ___  ____  __  __    
+  / __  / / _ \/ __ \ | / / _ \/ __ \/ / __  / __ \   / __ `/ /  / __ `__ \/ _ \/ __ \/ / / /    
+ / /_/ / /  __/ / / / |/ /  __/ / / / / /_/ / /_/ /  / /_/ / /  / / / / / /  __/ / / / /_/ /     
+/_____/_/\___/_/ /_/|___/\___/_/ /_/_/\__,_/\____/ __\__,_/_/  /_/ /_/ /_/\___/_/ /_/\__,_/      
+  ____/ /__     ____  _________  ____/ /_  _______/ /_____  _____                                
+ / __  / _ \   / __ \/ ___/ __ \/ __  / / / / ___/ __/ __ \/ ___/                                
+/ /_/ /  __/  / /_/ / /  / /_/ / /_/ / /_/ / /__/ /_/ /_/ (__  )                                 
+\__,_/\___/  / .___/_/   \____/\__,_/\__,_/\___/\__/\____/____/                                  
+            /_/                                                                                  
+        
+            1. Reportes de los productos
+            2. Guardar, Actualizar y Eliminar productos
+            0. Regresar al menu principal
           
-# for nombre, objeto in sys.modules.items():
-#     if nombre.startswith("modules"):
-#         modulo = getattr(objeto, "__name__", None)
-#         if ((modulo != "modules")):
-#           file = modulo.split("get")[-1]
-#           print(file)
+            """)
+        opcion = input("\nSelecione una de las opciones: ")
+        if(re.match(r'[0-9]+$', opcion) is not None):
+            opcion = int(opcion)
+            if(opcion>=0 and opcion<=2):
+                if(opcion == 1):
+                    Repproducto.menu()
+                if(opcion == 2):
+                    CRUDproducto.menu()
+                elif(opcion == 0):
+                    break
+
+
+
+
+if(__name__ == "__main__"):
+
+
+# devuelve un listado con el codigo de pedido codigo cl, 
+# fecha esperada y fecha de entrega de los pedidos que no 
+# han sido entrregados a tiempo
+    
+    # peticion = requests.get("http://154.38.171.54:5007/pedidos?estado=Entregado")
+    # data = json.dumps(peticion.json(), indent=4)
+    # print(data)
+
+
+
+
+    print(tabulate(pedidos.getAllPedidosEntregadosAtrasadosDeTiempo(), headers="keys", tablefmt="github"))
+
+
+
+
+
+
+
+
+
+
+#     # https://patorjk.com/software/taag/#p=display&h=2&v=2&f=Slant&t=Menu%20Principal
+#     while True:
+#         os.system("clear")
+#         print(""" 
+#     __  ___                    ____       _            _             __
+#    /  |/  /__  ____  __  __   / __ \_____(_)___  _____(_)___  ____ _/ /
+#   / /|_/ / _ \/ __ \/ / / /  / /_/ / ___/ / __ \/ ___/ / __ \/ __ `/ / 
+#  / /  / /  __/ / / / /_/ /  / ____/ /  / / / / / /__/ / /_/ / /_/ / /  
+# /_/  /_/\___/_/ /_/\__,_/  /_/   /_/  /_/_/ /_/\___/_/ .___/\__,_/_/   
+#                                                     /_/                
+#                         1. Cliente
+#                         2. Oficina
+#                         3. Empleado
+#                         4. Pedidos
+#                         5. Productos
+#                         0. Salir
+# """) 
+#         opcion = input("\nSelecione una de las opciones: ")
+#         if(re.match(r'[0-9]+$', opcion) is not None):
+#             opcion = int(opcion)
+#             if(opcion>=0 and opcion<=5):
+#                 if(opcion == 1):
+#                     cliente.menu()
+#                 elif(opcion == 2):
+#                     oficina.menu()
+#                 elif(opcion == 3):
+#                     empleado.menu()
+#                 elif(opcion == 4):
+#                     pedidos.menu()
+#                 elif(opcion == 5):
+#                     menuProducto()
+#                 elif(opcion == 0):
+#                     break
     
 
+        
 
-if __name__ == "__main__":
-    while True:
-        print("""
-    __  ___                    ____       _            _             __
-   /  |/  /__  ____  __  __   / __ \_____(_)___  _____(_)___  ____ _/ /
-  / /|_/ / _ \/ __ \/ / / /  / /_/ / ___/ / __ \/ ___/ / __ \/ __ `/ / 
- / /  / /  __/ / / / /_/ /  / ____/ /  / / / / / /__/ / /_/ / /_/ / /  
-/_/  /_/\___/_/ /_/\__,_/  /_/   /_/  /_/_/ /_/\___/_/ .___/\__,_/_/   
-                                                    /_/                
 
-        0. Salir
-        1. Cliente
-        2. Oficina
-        3. Empleado
-        4. Pedidos
-        5. Pago
-        """)
 
-        try:
-            option = int(input("\nSeleccione una de las opciones: "))
-        except ValueError:
-            print("Ingrese una opción correcta!")
-        else:
-            if option == 0:
-                break
-            elif option == 1:
-                clientes.menu()
-            elif option == 2:
-                oficina.menu()
-            elif option == 3:
-                empleado.menu()
-            elif option == 4:
-                pedido.menu()
-            elif option == 5:
-                pago.menu()
 
-      
+
+
+
+
+
+
+
+
+       
+
+
+
+
+
+
+        # data = input("Datos")
+        # if(re.match(r'[a-z A-Z]+$', data) is not None):
+        #     print("Letras")
+        # elif(re.match(r'[0-9.]+$', data) is not None):
+        #     print("Numeros")
+
+
+
+
+
+
+
+
+
+
+# import sys
+# def menu():
+#     contador = 1
+#     print("Menu Principal")
+#     for nombre, objeto in sys.modules.items():
+#         if nombre.startswith("modules"):
+#             modulo = getattr(objeto, "__name__", None)
+#             if(modulo != "modules"):
+#                 print(f"""{contador}. {modulo.split("get")[-1]} """)
+#                 contador += 1
+# menu()
+
